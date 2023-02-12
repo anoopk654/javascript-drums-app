@@ -5,6 +5,7 @@ for(var i = 0 ; i < buttonLength; i++){
        
         var buttonText = this.innerHTML;
         makeSound(buttonText);
+        buttonAnimation(buttonText);
     });
 }
 
@@ -13,6 +14,7 @@ document.addEventListener("keypress", function(event){
 
     var pressedKey = event.key;
     makeSound(pressedKey);
+    buttonAnimation(pressedKey);
 });
 
 //Sound generating function
@@ -54,4 +56,12 @@ function makeSound(key){
                 break;
             default:
         }
+}
+
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("."+currentKey);
+    activeButton.classList.add('pressed');
+    setTimeout(function(){
+        activeButton.classList.remove('pressed')
+    },100);
 }
