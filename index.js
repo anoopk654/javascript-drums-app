@@ -1,9 +1,23 @@
+//Detecting Button Press 
 var buttonLength = document.querySelectorAll(".drum").length;
 for(var i = 0 ; i < buttonLength; i++){
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
        
-        var buttonName = this.innerHTML;
-        switch(buttonName){
+        var buttonText = this.innerHTML;
+        makeSound(buttonText);
+    });
+}
+
+//Detecting Keyboard Press
+document.addEventListener("keypress", function(event){
+
+    var pressedKey = event.key;
+    makeSound(pressedKey);
+});
+
+//Sound generating function
+function makeSound(key){
+        switch(key){
             case "w":
                 var tom1 = new Audio("sounds/tom-1.mp3");
                 tom1.play();
@@ -40,5 +54,4 @@ for(var i = 0 ; i < buttonLength; i++){
                 break;
             default:
         }
-    });
 }
